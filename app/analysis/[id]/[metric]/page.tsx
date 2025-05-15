@@ -43,7 +43,8 @@ export default function AnalysisDashboard({
             </h1>
             <p className="text-gray-600 mb-6">Analysis Dashboard • {formattedMetricName}</p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* ROW 1: Product image and Fiber Loss chart side by side */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               {/* Product Image with Hotspots */}
               <div className="bg-gray-50 rounded-lg p-4">
                 <div className="relative aspect-square">
@@ -55,33 +56,42 @@ export default function AnalysisDashboard({
                 </div>
               </div>
 
-              {/* Micrograph */}
-              <div className="bg-gray-50 rounded-lg p-4">
-                <h2 className="text-xl font-semibold mb-3">Micrograph</h2>
-                <div className="h-[300px]">
-                  <MicrographImage productId={params.id} />
+              {/* Fiber Loss Chart - Taller to match image height */}
+              <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                <h2 className="text-xl font-semibold mb-4">Fiber Loss</h2>
+                <div className="h-[350px]"> {/* Made taller to match image height */}
+                  <FiberLossChart productId={params.id} />
                 </div>
               </div>
             </div>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
-            {/* Fiber Loss Chart */}
-            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-              <h2 className="text-xl font-semibold mb-4">Fiber Loss</h2>
-              <FiberLossChart productId={params.id} />
-            </div>
-
-            {/* Composition Chart */}
-            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-              <h2 className="text-xl font-semibold mb-4">Composition</h2>
-              <CompositionChart productId={params.id} />
-            </div>
-
-            {/* Quality Metrics Chart */}
-            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-              <h2 className="text-xl font-semibold mb-4">Comparing Fiber Loss with Quality Metrics</h2>
-              <QualityMetricsChart productId={params.id} />
+            {/* ROW 2: Card with Composition chart and placeholder images */}
+            <div className="grid grid-cols-1 gap-6 mb-6">
+              <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                {/* Top placeholder image */}
+                <div className="mb-6">
+                  <h2 className="text-xl font-semibold mb-4">Material Analysis</h2>
+                  <div className="bg-gray-100 rounded-lg w-full h-64 flex items-center justify-center">
+                    <MicrographImage productId={params.id} />
+                  </div>
+                </div>
+                
+                {/* Composition chart */}
+                <div className="mb-6">
+                  <h2 className="text-xl font-semibold mb-4">Composition</h2>
+                  <div className="h-64">
+                    <CompositionChart productId={params.id} />
+                  </div>
+                </div>
+                
+                {/* Bottom placeholder image taking full width */}
+                <div>
+                  <h2 className="text-xl font-semibold mb-4">Comparing Fiber Loss with Quality Metrics</h2>
+                  <div className="w-full h-64">
+                    <QualityMetricsChart productId={params.id} />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
