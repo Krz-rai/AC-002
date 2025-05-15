@@ -39,26 +39,38 @@ export default function AnalysisDashboard({
             <h1 className="text-3xl font-bold text-gray-900 mb-2">
               {product.brand} {product.name}
             </h1>
-            <p className="text-gray-600 mb-6">Analysis Dashboard • {formattedMetricName}</p>
+            <div className="flex items-center mb-6">
+              <p className="text-gray-600">Analysis Dashboard • {formattedMetricName}</p>
+              <div className="ml-auto px-4 py-2 bg-amber-100 rounded-full border border-amber-300">
+                <span className="font-bold text-amber-800">Grade: C</span>
+              </div>
+            </div>
 
             {/* Row 1: Product Image and Fiber Loss Chart */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-              {/* Product Image */}
-              <div className="bg-gray-50 rounded-lg p-4">
-                <div className="relative aspect-square">
+              {/* Product Image - Slightly smaller */}
+              <div className="bg-gray-50 rounded-lg p-6">
+                <div className="relative aspect-square w-11/12 mx-auto">
                   <Image src={product.image || "/placeholder.svg"} alt={product.name} fill className="object-contain" />
                   {/* Hotspots */}
-                  <div className="absolute top-[15%] right-[25%] w-16 h-16 rounded-full border-2 border-dashed border-orange-400"></div>
-                  <div className="absolute top-[40%] left-[15%] w-16 h-16 rounded-full border-2 border-dashed border-orange-400"></div>
-                  <div className="absolute bottom-[25%] left-[25%] w-16 h-16 rounded-full border-2 border-dashed border-orange-400"></div>
+                  <div className="absolute top-[15%] right-[25%] w-14 h-14 rounded-full border-2 border-dashed border-orange-400"></div>
+                  <div className="absolute top-[40%] left-[15%] w-14 h-14 rounded-full border-2 border-dashed border-orange-400"></div>
+                  <div className="absolute bottom-[25%] left-[25%] w-14 h-14 rounded-full border-2 border-dashed border-orange-400"></div>
                 </div>
               </div>
 
-              {/* Fiber Loss Chart - Taller to match image height */}
+              {/* Fiber Loss Chart - Improved styling */}
               <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-                <h2 className="text-xl font-semibold mb-4">Fiber Loss</h2>
-                <div className="h-[400px]"> {/* Increased height to match image */}
+                <h2 className="text-xl font-semibold mb-4 flex items-center">
+                  <span>Fiber Loss</span>
+                  <span className="ml-2 px-2 py-0.5 text-sm bg-blue-100 text-blue-800 rounded">Critical Metric</span>
+                </h2>
+                <div className="h-[380px] bg-gradient-to-b from-white to-blue-50/30 rounded-lg p-4"> 
                   <FiberLossChart productId={params.id} />
+                </div>
+                <div className="mt-3 text-sm text-gray-500 flex justify-between">
+                  <span>Initial shedding: High</span>
+                  <span>Long-term stability: Good</span>
                 </div>
               </div>
             </div>
