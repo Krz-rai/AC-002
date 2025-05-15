@@ -6,6 +6,7 @@ import UserProfile from "@/components/user-profile"
 import { products } from "@/lib/product-data"
 import FiberLossChart from "@/components/charts/fiber-loss-chart"
 import CompositionChart from "@/components/charts/composition-chart"
+import { ChartContainer } from "@/components/ui/chart"
 
 export default function AnalysisDashboard({
   params,
@@ -36,41 +37,48 @@ export default function AnalysisDashboard({
           </div>
 
           <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8 mb-6">
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">
-              {product.brand} {product.name}
-            </h1>
-            <div className="flex items-center mb-6">
-              <p className="text-gray-600">Analysis Dashboard • {formattedMetricName}</p>
-              <div className="ml-auto px-4 py-2 bg-amber-100 rounded-full border border-amber-300">
-                <span className="font-bold text-amber-800">Grade: C</span>
+            {/* Grade Banner */}
+            <div className="bg-orange-50 border border-orange-200 rounded-md p-4 mb-6 flex items-center">
+              <div className="bg-orange-100 text-orange-700 rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl mr-4">C</div>
+              <div>
+                <h2 className="text-lg font-semibold text-orange-800">Fiber Loss Grade: C</h2>
+                <p className="text-orange-700 text-sm">Moderate shedding detected. Recommendations available below.</p>
               </div>
             </div>
 
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">
+              {product.brand} {product.name}
+            </h1>
+            <p className="text-gray-600 mb-6">Analysis Dashboard • {formattedMetricName}</p>
+
             {/* Row 1: Product Image and Fiber Loss Chart */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-              {/* Product Image - Slightly smaller */}
-              <div className="bg-gray-50 rounded-lg p-6">
-                <div className="relative aspect-square w-11/12 mx-auto">
+              {/* Product Image - Made slightly smaller */}
+              <div className="bg-gray-50 rounded-lg p-4">
+                <div className="relative mx-auto" style={{ width: "85%", height: "400px" }}>
                   <Image src={product.image || "/placeholder.svg"} alt={product.name} fill className="object-contain" />
                   {/* Hotspots */}
-                  <div className="absolute top-[15%] right-[25%] w-14 h-14 rounded-full border-2 border-dashed border-orange-400"></div>
-                  <div className="absolute top-[40%] left-[15%] w-14 h-14 rounded-full border-2 border-dashed border-orange-400"></div>
-                  <div className="absolute bottom-[25%] left-[25%] w-14 h-14 rounded-full border-2 border-dashed border-orange-400"></div>
+                  <div className="absolute top-[15%] right-[25%] w-16 h-16 rounded-full border-2 border-dashed border-orange-400"></div>
+                  <div className="absolute top-[40%] left-[15%] w-16 h-16 rounded-full border-2 border-dashed border-orange-400"></div>
+                  <div className="absolute bottom-[25%] left-[25%] w-16 h-16 rounded-full border-2 border-dashed border-orange-400"></div>
                 </div>
               </div>
 
-              {/* Fiber Loss Chart - Improved styling */}
+              {/* Fiber Loss Chart - Using ChartContainer */}
               <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-                <h2 className="text-xl font-semibold mb-4 flex items-center">
-                  <span>Fiber Loss</span>
-                  <span className="ml-2 px-2 py-0.5 text-sm bg-blue-100 text-blue-800 rounded">Critical Metric</span>
-                </h2>
-                <div className="h-[380px] bg-gradient-to-b from-white to-blue-50/30 rounded-lg p-4"> 
+                <h2 className="text-xl font-semibold mb-4">Fiber Loss Over Time</h2>
+                <ChartContainer 
+                  config={{
+                    fiberLoss: { color: "rgb(59, 130, 246)" },
+                    baseline: { color: "rgba(209, 213, 219, 0.5)" }
+                  }}
+                  className="h-[400px]"
+                >
                   <FiberLossChart productId={params.id} />
-                </div>
-                <div className="mt-3 text-sm text-gray-500 flex justify-between">
-                  <span>Initial shedding: High</span>
-                  <span>Long-term stability: Good</span>
+                </ChartContainer>
+                <div className="mt-3 flex justify-between text-sm text-gray-500">
+                  <span>Initial Washes</span>
+                  <span>Extended Use Period</span>
                 </div>
               </div>
             </div>
