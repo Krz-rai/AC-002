@@ -5,7 +5,7 @@ import Sidebar from "@/components/sidebar"
 import UserProfile from "@/components/user-profile"
 import { products } from "@/lib/product-data"
 import CompositionChart from "@/components/charts/composition-chart"
-import EnhancedFiberLossChart from "./enhanced-fiber-loss-chart" // Import the new enhanced chart
+import EnhancedFiberLossChart from "./fiber-loss-chart"
 
 export default function AnalysisDashboard({
   params,
