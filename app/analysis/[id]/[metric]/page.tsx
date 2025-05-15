@@ -6,8 +6,6 @@ import UserProfile from "@/components/user-profile"
 import { products } from "@/lib/product-data"
 import FiberLossChart from "@/components/charts/fiber-loss-chart"
 import CompositionChart from "@/components/charts/composition-chart"
-import QualityMetricsChart from "@/components/charts/quality-metrics-chart"
-import MicrographImage from "@/components/micrograph-image"
 
 export default function AnalysisDashboard({
   params,
@@ -43,9 +41,9 @@ export default function AnalysisDashboard({
             </h1>
             <p className="text-gray-600 mb-6">Analysis Dashboard • {formattedMetricName}</p>
 
-            {/* ROW 1: Product image and Fiber Loss chart side by side */}
+            {/* Row 1: Product Image and Fiber Loss Chart */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-              {/* Product Image with Hotspots */}
+              {/* Product Image */}
               <div className="bg-gray-50 rounded-lg p-4">
                 <div className="relative aspect-square">
                   <Image src={product.image || "/placeholder.svg"} alt={product.name} fill className="object-contain" />
@@ -59,70 +57,39 @@ export default function AnalysisDashboard({
               {/* Fiber Loss Chart - Taller to match image height */}
               <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
                 <h2 className="text-xl font-semibold mb-4">Fiber Loss</h2>
-                <div className="h-[350px]"> {/* Made taller to match image height */}
+                <div className="h-[400px]"> {/* Increased height to match image */}
                   <FiberLossChart productId={params.id} />
                 </div>
               </div>
             </div>
 
-            {/* ROW 2: Card with Composition chart and placeholder images */}
-            <div className="grid grid-cols-1 gap-6 mb-6">
+            {/* Row 2: Composition Chart and Placeholder Image */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              {/* Composition Chart */}
               <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-                {/* Top placeholder image */}
-                <div className="mb-6">
-                  <h2 className="text-xl font-semibold mb-4">Material Analysis</h2>
-                  <div className="bg-gray-100 rounded-lg w-full h-64 flex items-center justify-center">
-                    <MicrographImage productId={params.id} />
-                  </div>
+                <h2 className="text-xl font-semibold mb-4">Composition</h2>
+                <div className="h-64">
+                  <CompositionChart productId={params.id} />
                 </div>
-                
-                {/* Composition chart */}
-                <div className="mb-6">
-                  <h2 className="text-xl font-semibold mb-4">Composition</h2>
-                  <div className="h-64">
-                    <CompositionChart productId={params.id} />
-                  </div>
-                </div>
-                
-                {/* Bottom placeholder image taking full width */}
-                <div>
-                  <h2 className="text-xl font-semibold mb-4">Comparing Fiber Loss with Quality Metrics</h2>
-                  <div className="w-full h-64">
-                    <QualityMetricsChart productId={params.id} />
-                  </div>
+              </div>
+
+              {/* Placeholder Image */}
+              <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                <h2 className="text-xl font-semibold mb-4">Additional Metrics</h2>
+                <div className="relative h-64 bg-gray-100 rounded-lg flex items-center justify-center">
+                  <div className="text-gray-400 text-lg">Placeholder Image</div>
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* Analysis Section */}
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-            <h2 className="text-xl font-semibold mb-4">What this means for the team</h2>
-            <p className="text-gray-700 leading-relaxed">
-              Though shedding is somewhat elevated initially, the fiber loss curve quickly flattens. It correlates
-              strongly with pilling scores and is within acceptable abrasion and tensile strength thresholds. The{" "}
-              {product.name}'s {metricName} performance indicates that while there is room for improvement in initial
-              fiber retention, the long-term durability meets our quality standards.
-            </p>
-            <div className="mt-6 flex justify-end">
-              <button className="flex items-center text-blue-600 hover:text-blue-800">
-                <span className="mr-2">Export Report</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                  <polyline points="7 10 12 15 17 10"></polyline>
-                  <line x1="12" y1="15" x2="12" y2="3"></line>
-                </svg>
-              </button>
+            {/* Row 3: Full-width Placeholder Image */}
+            <div className="grid grid-cols-1 gap-6">
+              <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                <h2 className="text-xl font-semibold mb-4">Detailed Analysis</h2>
+                <div className="relative h-72 bg-gray-100 rounded-lg flex items-center justify-center">
+                  <div className="text-gray-400 text-lg">Large Placeholder Image</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
