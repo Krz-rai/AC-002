@@ -5,7 +5,7 @@ import { Home, BarChart2, FileText, Settings } from "lucide-react"
 export default function Sidebar() {
   return (
     <div className="w-72 bg-white border-r border-gray-200 p-4">
-      <div className="mb-8">
+      <div className="mb-3">
         <Link href="/" className="flex items-center gap-2">
           <div className="relative w-10 h-10">
             <Image 
