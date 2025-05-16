@@ -6,7 +6,6 @@ import UserProfile from "@/components/user-profile"
 import { products } from "@/lib/product-data"
 import FiberLossChart from "@/components/charts/fiber-loss-chart"
 import CompositionChart from "@/components/charts/composition-chart"
-import { ChartContainer } from "@/components/ui/chart"
 
 export default function AnalysisDashboard({
   params,
@@ -64,7 +63,7 @@ export default function AnalysisDashboard({
                 </div>
               </div>
 
-              {/* Fiber Loss Chart - Using ChartContainer */}
+              {/* Fiber Loss Chart */}
               <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
                 <h2 className="text-xl font-semibold mb-4">Fiber Loss Over Time</h2>
                 <div className="h-[400px]">
@@ -77,7 +76,17 @@ export default function AnalysisDashboard({
               </div>
             </div>
 
-            {/* Row 2: Composition Chart and Placeholder Image */}
+            {/* Row 2: Composition Chart and Additional Metrics */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              {/* Composition Chart */}
+              <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                <h2 className="text-xl font-semibold mb-4">Composition</h2>
+                <div className="h-64">
+                  <CompositionChart productId={params.id} />
+                </div>
+              </div>
+
+              {/* Additional Metrics Image */}
               <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
                 <h2 className="text-xl font-semibold mb-4">Additional Metrics</h2>
                 <div className="relative h-64 rounded-lg overflow-hidden">
@@ -91,16 +100,7 @@ export default function AnalysisDashboard({
               </div>
             </div>
 
-              {/* Placeholder Image */}
-              <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-                <h2 className="text-xl font-semibold mb-4">Additional Metrics</h2>
-                <div className="relative h-64 bg-gray-100 rounded-lg flex items-center justify-center">
-                  <div className="text-gray-400 text-lg">Placeholder Image</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Row 3: Full-width Placeholder Image */}
+            {/* Row 3: Full-width Image */}
             <div className="grid grid-cols-1 gap-6">
               <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
                 <h2 className="text-xl font-semibold mb-4">Detailed Analysis</h2>
