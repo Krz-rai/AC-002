@@ -4,8 +4,9 @@ import Image from "next/image"
 import Sidebar from "@/components/sidebar"
 import UserProfile from "@/components/user-profile"
 import { products } from "@/lib/product-data"
+import FiberLossChart from "@/components/charts/fiber-loss-chart"
 import CompositionChart from "@/components/charts/composition-chart"
-import EnhancedFiberLossChart from "./fiber-loss-chart"
+import { ChartContainer } from "@/components/ui/chart"
 
 export default function AnalysisDashboard({
   params,
@@ -63,11 +64,11 @@ export default function AnalysisDashboard({
                 </div>
               </div>
 
-              {/* Enhanced Fiber Loss Chart */}
+              {/* Fiber Loss Chart - Using ChartContainer */}
               <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
                 <h2 className="text-xl font-semibold mb-4">Fiber Loss Over Time</h2>
-                <div className="h-[400px]"> {/* Setting a fixed height container */}
-                  <EnhancedFiberLossChart productId={params.id} />
+                <div className="h-[400px]">
+                  <FiberLossChart productId={params.id} />
                 </div>
                 <div className="mt-3 flex justify-between text-sm text-gray-500">
                   <span>Initial Washes</span>
