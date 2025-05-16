@@ -9,7 +9,7 @@ export default function Sidebar() {
         <Link href="/" className="flex items-center gap-2">
           <div className="relative w-10 h-10">
             <Image 
-              src="/images/unnamed (1).png" 
+              src="/images/6.png" 
               alt="Baleena Logo" 
               width={40} 
               height={40}
