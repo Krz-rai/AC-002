@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Home, BarChart2, FileText, Settings } from "lucide-react"
 
 export default function Sidebar() {
@@ -7,13 +8,13 @@ export default function Sidebar() {
       <div className="mb-8">
         <Link href="/" className="flex items-center gap-2">
           <div className="relative w-10 h-10">
-            <div className="absolute w-10 h-10 rounded-full bg-blue-300"></div>
-            <div className="absolute top-0 left-1 w-4 h-4">
-              <div className="w-4 h-4 relative">
-                <div className="absolute w-2 h-3 bg-green-400 rounded-tr-full rounded-tl-full rotate-45 left-1"></div>
-                <div className="absolute w-2 h-3 bg-green-400 rounded-tr-full rounded-tl-full -rotate-45 left-1"></div>
-              </div>
-            </div>
+            <Image 
+              src="/images/Logo.png" 
+              alt="Baleena Logo" 
+              width={40} 
+              height={40}
+              className="object-contain"
+            />
           </div>
           <span className="text-3xl font-semibold text-blue-500">Baleena</span>
         </Link>
