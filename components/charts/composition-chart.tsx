@@ -31,7 +31,7 @@ export default function CompositionChart({ productId }: CompositionChartProps) {
         labels: ["Polyester", "Wool", "Nylon", "Other"],
         datasets: [
           {
-            data: [60, 20, 15, 5],
+            data: [100, 0, 0, 0],
             backgroundColor: [
               "rgba(75, 112, 146, 0.8)",
               "rgba(124, 156, 191, 0.8)",
