@@ -102,7 +102,7 @@ export default function AnalysisDashboard({
                 <h2 className="text-xl font-semibold mb-4">Detailed Analysis</h2>
                 <div className="relative w-full h-auto rounded-lg overflow-hidden">
                   <Image 
-                    src="/images/unnamed.png" 
+                    src="/images/Screenshot.png" 
                     alt="Detailed fiber analysis visualization" 
                     width={1200}
                     height={450}
