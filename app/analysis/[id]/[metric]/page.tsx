@@ -100,8 +100,14 @@ export default function AnalysisDashboard({
             <div className="grid grid-cols-1 gap-6">
               <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
                 <h2 className="text-xl font-semibold mb-4">Detailed Analysis</h2>
-                <div className="relative h-72 bg-gray-100 rounded-lg flex items-center justify-center">
-                  <div className="text-gray-400 text-lg">Large Placeholder Image</div>
+                <div className="relative w-full h-auto rounded-lg overflow-hidden">
+                  <Image 
+                    src="/images/unnamed.png" 
+                    alt="Detailed fiber analysis visualization" 
+                    width={1200}
+                    height={450}
+                    className="w-full object-contain"
+                  />
                 </div>
               </div>
             </div>
