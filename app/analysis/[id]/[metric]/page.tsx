@@ -78,14 +78,18 @@ export default function AnalysisDashboard({
             </div>
 
             {/* Row 2: Composition Chart and Placeholder Image */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-              {/* Composition Chart */}
               <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-                <h2 className="text-xl font-semibold mb-4">Composition</h2>
-                <div className="h-64">
-                  <CompositionChart productId={params.id} />
+                <h2 className="text-xl font-semibold mb-4">Additional Metrics</h2>
+                <div className="relative h-64 rounded-lg overflow-hidden">
+                  <Image 
+                    src="/images/5.png" 
+                    alt="Additional fiber metrics visualization" 
+                    fill
+                    className="object-contain"
+                  />
                 </div>
               </div>
+            </div>
 
               {/* Placeholder Image */}
               <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
